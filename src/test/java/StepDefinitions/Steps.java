@@ -6,8 +6,6 @@ import io.cucumber.java.Before;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
-import java.io.IOException;
-
 
 public class Steps extends BaseClass{
 
@@ -17,9 +15,9 @@ public class Steps extends BaseClass{
         setupDriver(driver);
     }
 
-    @Given("User is on login page")
-    public void user_is_on_login_page() {
-        driver.get("https://winbet.bg/sports");
+    @Given("User is on login page {string}")
+    public void user_is_on_login_page(String string) {
+        driver.get(string);
         Login l = new Login(driver);
         l.acceptCookie();
     }

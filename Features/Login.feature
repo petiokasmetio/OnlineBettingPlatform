@@ -7,7 +7,7 @@ Feature: Login functionality
 
   @RegressionTest @SmokeTest
   Scenario Outline: Check login is successful with valid credentials
-    Given User is on login page
+    Given User is on login page "https://winbet.bg/sports"
     When User enters Username "<username>" and Password "<password>"
     Then User is navigated to the home page
 
@@ -17,7 +17,7 @@ Feature: Login functionality
 
   @RegressionTest
   Scenario Outline: Check login with invalid credentials is unsuccessful
-    Given User is on login page
+    Given User is on login page "https://winbet.bg/sports"
     When User enters Username "<username>" and Password "<password>"
     Then Error message is displayed
 

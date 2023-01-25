@@ -21,7 +21,6 @@ import org.junit.runner.RunWith;
         //tags = "@SmokeTest and not @RegressionTest",
         tags = "@RegressionTest or @SmokeTest"
 
-
 )
 public class TestRunner {
 }
