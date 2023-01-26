@@ -1,9 +1,11 @@
 package Pages;
+import Utilities.WaitHelper;
 import org.junit.Assert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.FluentWait;
 import org.openqa.selenium.support.ui.Wait;
@@ -13,9 +15,12 @@ import static org.junit.Assert.assertTrue;
 public class Login {
 
     public WebDriver driver;
+    WaitHelper waitHelper;
 
     public Login(WebDriver remoteDriver) {
         driver = remoteDriver;
+        PageFactory.initElements(driver, this);
+        waitHelper = new WaitHelper(driver);
     }
 
     public void acceptCookie()
@@ -23,6 +28,7 @@ public class Login {
         try {
             WebElement element = driver.findElement(By
                     .cssSelector("button.btn.ml-auto.btn-primary[data-qid='accept-cookies']"));
+            waitHelper.WaitForElement(element, 30);
             if(element.isDisplayed() && element.isEnabled()) {
                 assertTrue(true);
                 element.click();
@@ -39,6 +45,7 @@ public class Login {
     {
         try {
             WebElement element = driver.findElement(By.cssSelector("div[data-qid='nav-login-btn']"));
+            waitHelper.WaitForElement(element, 30);
             element.click();
         } catch (Exception e) {
             System.out.println("An error occurred while trying to locate the element or perform the click: " + e);
@@ -57,12 +64,15 @@ public class Login {
                 }
             }
             WebElement usernameField = driver.findElement(By.cssSelector("input[name='username']"));
+            waitHelper.WaitForElement(usernameField, 30);
             usernameField.sendKeys(username);
 
             WebElement passwordField = driver.findElement(By.cssSelector("input[name='password']"));
+            waitHelper.WaitForElement(passwordField, 30);
             passwordField.sendKeys(password);
 
             WebElement loginBtn = driver.findElement(By.cssSelector("button[data-qid='login-btn']"));
+            waitHelper.WaitForElement(loginBtn, 30);
             loginBtn.click();
 
             driver.switchTo().defaultContent();
@@ -85,6 +95,7 @@ public class Login {
     public void checkBallance() {
             // Locate the element using a CSS selector
         WebElement element = driver.findElement(By.cssSelector("span.text-nowrap"));
+        waitHelper.WaitForElement(element, 30);
             // Get the text from the element
         String elementText = element.getText();
             // Convert the text to a double
@@ -109,7 +120,7 @@ public class Login {
         // Locate the element using a CSS selector
         WebElement element = driver.findElement(By
                 .cssSelector("div.d-flex-ac.auth-msg-line.auth-msg-line--error"));
-
+        waitHelper.WaitForElement(element, 30);
         // Get the text from the element
         String elementText = element.getText();
 
