@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="Cucumber" time="50.422" tests="3" skipped="0" failures="0" errors="0">
+<testcase classname="Login functionality" name="Check login is successful with valid credentials - Example #1.1" time="21.358">
+<system-out><![CDATA[
+Given User is on login page "https://winbet.bg/sports"......................passed
+When User enters Username "pet.io" and Password "36L99mw5FcTYR82"...........passed
+Then User is navigated to the home page.....................................passed
+]]></system-out>
+</testcase>
+<testcase classname="Login functionality" name="Check login with invalid credentials is unsuccessful - Example #1.1" time="12.312">
+<system-out><![CDATA[
+Given User is on login page "https://winbet.bg/sports"......................passed
+When User enters Username "user1" and Password "pass1"......................passed
+Then Error message is displayed.............................................passed
+]]></system-out>
+</testcase>
+<testcase classname="Favourites page functionality" name="Check for empty favourites list" time="16.336">
+<system-out><![CDATA[
+Given User is logged in.....................................................passed
+When Click on Favourites....................................................passed
+Then Favourites page is displayed...........................................passed
+]]></system-out>
+</testcase>
+</testsuite>
